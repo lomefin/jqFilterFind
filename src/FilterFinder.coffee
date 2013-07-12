@@ -42,27 +42,20 @@ class JQFilterFinder
       container.append(label).append(filter)
       $(@filters[filterName]).each (_idx,filterValue)->
         filter.append $('<option>').val(filterValue).text(filterValue)
+      filter.on 'change', {cardClass: @options.cardClass, dataElement:filterName}, @search
 
     finder = $('<input type="text">').addClass(@options.finderClass)
     container.append(finder)
 
-    finder.on 'keyup',{cardClass: @options.cardClass, finder:@options.finder},@finderChanged
+    finder.on 'keyup',{cardClass: @options.cardClass, dataElement:@options.finder}, @search
 
-  finderComparer: (searchQuery,elementValue)->
-    value = searchQuery.toLowerCase().replace /[ ]/g,""
-    rx = new RegExp(value)
-    elementValue.match(rx) isnt null
-
-  squatcher: (value)->
-    value.toLowerCase().replace /[ ]/g,""
-
-  finderChanged: (evt)=>
+  search: (evt)=>
     comparer = @options.finderComparer
     foundClass = @options.foundClass
     notFoundClass = @options.notFoundClass
-    finder = @options.finder
+    finder = evt.data.dataElement
     options = @options
-    value = $(evt.delegateTarget).val()
+    value = ""+$(evt.delegateTarget).val()
 
     $('.'+evt.data.cardClass).each (idx,card)->
       if comparer(value,$(card).data(finder))
@@ -74,12 +67,17 @@ class JQFilterFinder
 
   constructor: (options={})->
     @default = $.extend true, @defaults, {finderComparer: @finderComparer, squatcher: @squatcher}
-    console.debug "JQFilterFinder starting"
     @options = $.extend true, @defaults, options
-    console.debug "Options: ", @options
     window.options = @options
     window.instance = @
 
+  finderComparer: (searchQuery,elementValue)->
+    value = searchQuery.toLowerCase().replace /[ ]/g,""
+    rx = new RegExp(value)
+    elementValue.toString().match(rx) isnt null
+
+  squatcher: (value)->
+    value.toLowerCase().replace /[ ]/g,""
 
 window.JQFilterFinder ?= JQFilterFinder
 
