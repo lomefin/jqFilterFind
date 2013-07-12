@@ -26,6 +26,17 @@ Initialize the script
 This assumes two things:
 
 1. You've got jquery
-2. You've got your elements with the class 'card' and it has some info on the 'data-lookup' field
+2. You've got your elements with the class ```card``` and it has some info on the ```data-lookup``` field
+
+Example of elements
+
+```
+<div class="card" data-lookup="Banana">
+	<h1>I love bananas</h1>
+</div>
+<div class="card" data-lookup="Pear">
+	<h1>I love pears</h1>
+</div>
+```
 
 
