@@ -42,3 +42,40 @@ Example of elements
 ```
 
 
+Options
+---------
+
+You can configure a lot of how the Filter/Finder works. The options dictionary is the way.
+
+When initializing the FilterFinder, make sure you pass your options dictionary like in the following example:
+
+```
+<script>
+	var options = { cardClass: 'row'}
+    $(function(){
+		new FilterFinder(options).bind();
+	});
+</script>
+```
+
+The options element considers the following (example shows the default values)
+
+```
+#Container information
+cardClass: 'card' #Class name from the element which contains the information (known as card in JQFF)
+containerClass: 'filter-finder-container' #Class name from the container element which will have JQFF inputs
+
+#Data information
+filters: [] #What microdata elements will be filtered
+finder: 'lookup' #What microdata element will have the finder
+
+#Style information
+filterClass: 'input-medium' #Class of the filter select input
+finderClass: 'input-medium search-query' #Class of the filter text input 
+foundClass: 'found' #Class added to an element that complies with the search
+notFoundClass: 'hidden' #Class added to an element that does not comply with the search
+
+#Method information
+finderComparer: function(value1,value2) #Read below
+squatcher: function(value) #Read below
+```
