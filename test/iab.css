@@ -1,0 +1,51 @@
+.report-row
+{
+  border-radius: 7px;
+  border: 2px solid silver;
+  padding: 9px;
+  margin-bottom: 10px;
+}
+
+.report-row .details
+{
+  border-top: 2px solid silver;
+  padding-top: 10px;
+  
+}
+.report-row .details .well
+{
+  text-align: center;
+}
+.report-row .row-fluid
+{
+}
+.report-row .row-fluid:last-child
+{
+  margin-top: 20px;
+}
+.timeago
+{
+  font-weight: bold;
+}
+.selectables
+{
+	margin: 2em 0;
+}
+.selectables .selectable
+{
+  margin:0;
+  width:25%;
+  cursor:pointer;
+}
+.selectables .selectable:hover
+{
+	background-color: #efffe8;	
+}
+.selectable.selected
+{
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+
+}
+.hidden {display:none;}
