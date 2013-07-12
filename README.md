@@ -24,7 +24,8 @@ Initialize the script
 ```
 
 This assumes two things:
-1. [x] You've got jquery
-2. [x] You've got your elements with the class 'card' and it has some info on the 'data-lookup' field
+
+1. You've got jquery
+2. You've got your elements with the class 'card' and it has some info on the 'data-lookup' field
 
 
